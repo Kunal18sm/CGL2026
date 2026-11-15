@@ -40,7 +40,7 @@ An intelligent analytics dashboard and interactive practice engine built for SSC
    - On Windows: Double click `start_website.bat`
    - Or run in terminal:
      ```bash
-     python -m http.server 8080 --directory web
+     python -m http.server 8080
      ```
 
 3. Open your browser and navigate to:
@@ -53,13 +53,12 @@ An intelligent analytics dashboard and interactive practice engine built for SSC
 ## 📂 Project Structure
 
 ```
-├── web/
-│   ├── index.html        # Clean minimal portal UI
-│   ├── style.css         # Modern light/dark theme styles
-│   ├── app.js            # Interactive analytics, filters & test engine
-│   ├── data.json         # Complete dataset (2,000 Qs + 125 Subtopics)
-│   ├── favicon.svg       # Portal app icon
-│   └── cards/            # 2,000 cropped question scan cards
+├── index.html        # Clean minimal portal UI
+├── style.css         # Modern light/dark theme styles
+├── app.js            # Interactive analytics, filters & test engine
+├── data.json         # Complete dataset (2,000 Qs + 125 Subtopics)
+├── favicon.svg       # Portal app icon
+├── cards/            # 2,000 cropped question scan cards
 ├── extract_all_text.py   # OCR & text extraction engine
 ├── recategorize.py       # 125-subtopic classification pipeline
 ├── start_website.bat     # One-click Windows launcher
