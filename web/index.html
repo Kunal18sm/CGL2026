@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSC CGL 2026 — 20 Papers Analysis & Practice Portal</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Minimal Simple Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <div class="app-icon-wrap">
+          <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+            <rect width="48" height="48" rx="10" fill="#2563eb"/>
+            <circle cx="24" cy="24" r="14" stroke="#ffffff" stroke-width="3" opacity="0.45"/>
+            <circle cx="24" cy="24" r="9" stroke="#ffffff" stroke-width="3"/>
+            <circle cx="24" cy="24" r="4.5" fill="#ffffff"/>
+            <path d="M24 6 L24 11 M24 37 L24 42 M6 24 L11 24 M37 24 L42 24" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-title">SSC CGL 2026 Analysis</div>
+      </div>
+      <nav class="nav-links">
+        <button class="nav-btn active" data-tab="analytics-tab">Analytics</button>
+        <button class="nav-btn" data-tab="questions-tab">Question Bank</button>
+        <button class="nav-btn" data-tab="practice-tab">Practice Test</button>
+      </nav>
+      <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Light / Dark Mode">
+        <span id="theme-icon">🌙</span> <span id="theme-text">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-container">
+
+    <!-- ================= TAB 1: TOPIC ANALYTICS ================= -->
+    <section id="analytics-tab" class="tab-pane active">
+      
+      <!-- Key Metric Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Papers Analyzed</div>
+          <div class="stat-val" id="stat-papers">20</div>
+          <div class="stat-note">All 20 Shifts (30 Sep – 14 Oct 2026)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Questions Categorized</div>
+          <div class="stat-val" id="stat-questions">2,000</div>
+          <div class="stat-note">100 Questions per Shift</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Granular Subcategories</div>
+          <div class="stat-val" id="stat-topics">125</div>
+          <div class="stat-note">Detailed Subtopics & Concepts</div>
+        </div>
+        <div class="stat-card verified">
+          <div class="stat-label">Official Answer Key</div>
+          <div class="stat-val">100%</div>
+          <div class="stat-note">Verified from official response sheets</div>
+        </div>
+      </div>
+
+      <!-- Section Summary Bar -->
+      <div class="card section-overview">
+        <div class="card-header">
+          <h2>Sectional Breakdown (500 Questions Each)</h2>
+          <p class="card-desc">Click any section to filter the detailed subcategory breakdown below</p>
+        </div>
+        <div class="section-pills-row">
+          <div class="sec-card" data-sec="General Intelligence & Reasoning">
+            <div class="sec-top">
+              <span class="sec-title">Reasoning</span>
+              <span class="sec-count">500 Qs</span>
+            </div>
+            <div class="sec-bar"><div class="sec-fill" style="width: 25%; background: #2563eb;"></div></div>
+            <div class="sec-meta">25 Qs / Shift • 50 Marks</div>
+          </div>
+          <div class="sec-card" data-sec="General Awareness">
+            <div class="sec-top">
+              <span class="sec-title">General Awareness (GK)</span>
+              <span class="sec-count">500 Qs</span>
+            </div>
+            <div class="sec-bar"><div class="sec-fill" style="width: 25%; background: #0891b2;"></div></div>
+            <div class="sec-meta">25 Qs / Shift • 50 Marks</div>
+          </div>
+          <div class="sec-card" data-sec="Quantitative Aptitude">
+            <div class="sec-top">
+              <span class="sec-title">Quantitative Aptitude</span>
+              <span class="sec-count">500 Qs</span>
+            </div>
+            <div class="sec-bar"><div class="sec-fill" style="width: 25%; background: #d97706;"></div></div>
+            <div class="sec-meta">25 Qs / Shift • 50 Marks</div>
+          </div>
+          <div class="sec-card" data-sec="English Comprehension">
+            <div class="sec-top">
+              <span class="sec-title">English Comprehension</span>
+              <span class="sec-count">500 Qs</span>
+            </div>
+            <div class="sec-bar"><div class="sec-fill" style="width: 25%; background: #059669;"></div></div>
+            <div class="sec-meta">25 Qs / Shift • 50 Marks</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comprehensive Subcategory Frequency & Weightage Table -->
+      <div class="card">
+        <div class="card-header flex-between">
+          <div>
+            <h2>Granular Topic & Subcategory Analysis</h2>
+            <p class="card-desc">Detailed questions count, shift frequency, average appearance & yield levels</p>
+          </div>
+          <div class="table-controls">
+            <input type="text" id="topic-search" placeholder="Search subtopic, concept, or keyword..." class="input-search">
+            <div class="filter-group" id="topic-section-filters">
+              <button class="filter-pill active" data-filter="all">All</button>
+              <button class="filter-pill" data-filter="General Intelligence & Reasoning">Reasoning</button>
+              <button class="filter-pill" data-filter="General Awareness">GA (GK)</button>
+              <button class="filter-pill" data-filter="Quantitative Aptitude">Maths</button>
+              <button class="filter-pill" data-filter="English Comprehension">English</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table" id="topics-table">
+            <thead>
+              <tr>
+                <th class="sortable" data-col="section">Section <span class="sort-icon">↕</span></th>
+                <th class="sortable" data-col="topic">Topic Domain <span class="sort-icon">↕</span></th>
+                <th class="sortable" data-col="subtopic">Subcategory <span class="sort-icon">↕</span></th>
+                <th>Detailed Concept Scope</th>
+                <th class="sortable text-right active desc" data-col="total_questions">Total Qs <span class="sort-icon">↓</span></th>
+                <th class="sortable text-right" data-col="shifts_appeared">In 20 Shifts <span class="sort-icon">↕</span></th>
+                <th class="sortable text-right" data-col="weightage_pct">Weightage <span class="sort-icon">↕</span></th>
+                <th class="sortable" data-col="yield_tag">Yield <span class="sort-icon">↕</span></th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody id="topics-table-body">
+              <tr>
+                <td colspan="10" class="text-center py-6 text-muted">Loading subtopic analytics...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Shift-by-Shift Paper Explorer -->
+      <div class="card">
+        <div class="card-header">
+          <h2>All 20 Exam Shifts Explorer</h2>
+          <p class="card-desc">Select any real shift to take a full 100-question timed mock test</p>
+        </div>
+        <div class="paper-grid" id="paper-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ================= TAB 2: QUESTION BANK ================= -->
+    <section id="questions-tab" class="tab-pane">
+      
+      <!-- Filter Bar -->
+      <div class="card filter-card">
+        <div class="filter-grid">
+          <div class="form-group flex-2">
+            <label for="q-search">Search Questions</label>
+            <input type="text" id="q-search" placeholder="Search keywords, topics, formulas..." class="input-search">
+          </div>
+          <div class="form-group">
+            <label for="q-sec-filter">Section</label>
+            <select id="q-sec-filter" class="select-input">
+              <option value="all">All Sections</option>
+              <option value="General Intelligence & Reasoning">Reasoning</option>
+              <option value="General Awareness">General Awareness</option>
+              <option value="Quantitative Aptitude">Quantitative Aptitude</option>
+              <option value="English Comprehension">English Comprehension</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="q-topic-filter">Subcategory</label>
+            <select id="q-topic-filter" class="select-input">
+              <option value="all">All Subcategories</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="q-paper-filter">Paper Shift</label>
+            <select id="q-paper-filter" class="select-input">
+              <option value="all">All 20 Shifts</option>
+            </select>
+          </div>
+        </div>
+        <div class="filter-status">
+          <span>Showing <strong id="q-filtered-count">0</strong> of <strong id="q-total-count">2,000</strong> questions</span>
+          <button id="q-reset-filters" class="btn-link">Reset Filters</button>
+        </div>
+      </div>
+
+      <!-- Questions List Container -->
+      <div id="questions-list" class="questions-list">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-bar" id="pagination-bar">
+        <button id="prev-page" class="btn-secondary">Previous</button>
+        <span id="page-info">Page 1 of 40</span>
+        <button id="next-page" class="btn-secondary">Next</button>
+      </div>
+
+    </section>
+
+
+    <!-- ================= TAB 3: PRACTICE & MOCK TEST ================= -->
+    <section id="practice-tab" class="tab-pane">
+      
+      <!-- Mode Selection View -->
+      <div id="practice-selector" class="practice-selector-container">
+        
+        <div class="card text-center mb-6">
+          <h2>Practice & Test Engine</h2>
+          <p class="card-desc">Practice by specific subcategory with instant verification or take a full 60-minute mock exam</p>
+        </div>
+
+        <div class="modes-grid">
+          <!-- Mode 1: Subtopic Practice -->
+          <div class="mode-card">
+            <h3>Subcategory Practice</h3>
+            <p>Select any specific subcategory (e.g. Ancient History: Indus Valley, Polity: Supreme Court, Maths: Trigonometry). Instant feedback on each question.</p>
+            
+            <div class="form-group mt-4 text-left">
+              <label for="practice-sec-select">Section</label>
+              <select id="practice-sec-select" class="select-input">
+                <option value="General Awareness" selected>General Awareness</option>
+                <option value="General Intelligence & Reasoning">Reasoning</option>
+                <option value="Quantitative Aptitude">Quantitative Aptitude</option>
+                <option value="English Comprehension">English Comprehension</option>
+              </select>
+            </div>
+            <div class="form-group text-left">
+              <label for="practice-topic-select">Subcategory</label>
+              <select id="practice-topic-select" class="select-input">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group text-left">
+              <label for="practice-count-select">Number of Questions</label>
+              <select id="practice-count-select" class="select-input">
+                <option value="10">10 Questions</option>
+                <option value="20" selected>20 Questions</option>
+                <option value="all">All Available</option>
+              </select>
+            </div>
+            <button id="btn-start-topic-practice" class="btn-primary w-full mt-2">Start Practice</button>
+          </div>
+
+          <!-- Mode 2: Full Exam Mock Test -->
+          <div class="mode-card">
+            <h3>Full 100-Question Mock Exam</h3>
+            <p>Take an authentic timed test using any of the 20 real SSC CGL 2026 shifts with official marking (+2 for correct, -0.5 for wrong).</p>
+            
+            <div class="form-group mt-4 text-left">
+              <label for="mock-paper-select">Select Real Shift</label>
+              <select id="mock-paper-select" class="select-input">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group text-left">
+              <label>Exam Rules</label>
+              <div class="exam-rules-box">
+                <div><span>Questions:</span> <strong>100 Questions (25 x 4 sections)</strong></div>
+                <div><span>Duration:</span> <strong>60 Minutes Countdown</strong></div>
+                <div><span>Marking:</span> <strong>+2 Correct, -0.5 Negative Mark</strong></div>
+              </div>
+            </div>
+            <button id="btn-start-mock-exam" class="btn-success w-full mt-2">Start 60-Minute Exam</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Active Test / Practice Interface View -->
+      <div id="active-test-view" class="test-interface hidden">
+        
+        <div class="test-header">
+          <div class="test-info">
+            <h3 id="test-title">Practice Test</h3>
+            <span id="test-subtitle" class="test-sub">Question 1 of 20</span>
+          </div>
+          <div class="test-actions-right">
+            <div id="test-timer-box" class="test-timer hidden">
+              <span class="timer-label">Time</span>
+              <span id="test-timer-val" class="timer-digits">60:00</span>
+            </div>
+            <button id="btn-finish-test" class="btn-danger">Finish & Submit</button>
+          </div>
+        </div>
+
+        <div class="test-layout">
+          <!-- Main Question Area -->
+          <div class="test-main-pane">
+            
+            <div class="card question-active-card">
+              <div class="q-card-top">
+                <span class="q-num-pill" id="test-q-num">Question 1</span>
+                <span class="q-sec-tag" id="test-q-sec">Reasoning</span>
+                <span class="q-topic-tag" id="test-q-topic">Topic</span>
+                <span class="q-paper-tag" id="test-q-paper">Paper 1</span>
+              </div>
+
+              <!-- Question Content (Clean Typography Text) -->
+              <div class="q-content-body">
+                <div class="q-statement-box">
+                  <p id="test-q-statement" class="q-statement-text"></p>
+                </div>
+                <!-- Optional Collapsible Diagram Toggle (hidden unless user clicks) -->
+                <div id="test-q-card-toggle" class="q-card-toggle-wrap">
+                  <button type="button" id="btn-toggle-diagram" class="btn-toggle-diagram">📷 View Original Response Sheet Scan</button>
+                  <div id="test-q-image-container" class="q-img-wrap hidden">
+                    <img id="test-q-img" src="" alt="Question Scan" class="q-scan-img">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Option Selection -->
+              <div class="options-container" id="test-options-container">
+                <button class="opt-btn" data-opt="1">
+                  <span class="opt-key">A</span>
+                  <span class="opt-text" id="test-opt-1-text">Option 1</span>
+                </button>
+                <button class="opt-btn" data-opt="2">
+                  <span class="opt-key">B</span>
+                  <span class="opt-text" id="test-opt-2-text">Option 2</span>
+                </button>
+                <button class="opt-btn" data-opt="3">
+                  <span class="opt-key">C</span>
+                  <span class="opt-text" id="test-opt-3-text">Option 3</span>
+                </button>
+                <button class="opt-btn" data-opt="4">
+                  <span class="opt-key">D</span>
+                  <span class="opt-text" id="test-opt-4-text">Option 4</span>
+                </button>
+              </div>
+
+              <!-- Instant Feedback Box (in Practice Mode) -->
+              <div id="practice-feedback-box" class="feedback-box hidden">
+                <div class="feedback-status" id="feedback-status-msg"></div>
+                <div class="feedback-details" id="feedback-explanation"></div>
+              </div>
+
+              <!-- Question Navigation Controls -->
+              <div class="q-nav-controls">
+                <button id="btn-prev-q" class="btn-secondary">Previous</button>
+                <div class="mid-btns">
+                  <button id="btn-clear-q" class="btn-text">Clear Choice</button>
+                  <button id="btn-review-q" class="btn-text review">Mark for Review</button>
+                  <button id="btn-check-practice-ans" class="btn-secondary practice-only">Check Answer</button>
+                </div>
+                <button id="btn-next-q" class="btn-primary">Next</button>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Question Palette Sidebar -->
+          <aside class="test-sidebar">
+            <div class="card palette-card">
+              <h4>Question Palette</h4>
+              <div class="palette-legend">
+                <div class="leg-item"><span class="dot answered"></span> Answered</div>
+                <div class="leg-item"><span class="dot review"></span> Review</div>
+                <div class="leg-item"><span class="dot unvisited"></span> Unvisited</div>
+              </div>
+              <div class="palette-grid" id="test-palette-grid">
+                <!-- Numbers 1 to 100 -->
+              </div>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+
+      <!-- Test Result Modal / Scorecard -->
+      <div id="test-result-view" class="test-result-container hidden">
+        <div class="card result-card">
+          <div class="result-header">
+            <h2>Test Performance Summary</h2>
+            <p id="result-meta-sub" class="card-desc">Completed</p>
+          </div>
+          
+          <div class="score-kpi-row">
+            <div class="score-card">
+              <div class="score-label">Final Score</div>
+              <div class="score-val" id="result-score-val">0 / 200</div>
+              <div class="score-sub" id="result-score-percent">0% Net Marks</div>
+            </div>
+            <div class="score-card">
+              <div class="score-label">Accuracy</div>
+              <div class="score-val text-success" id="result-accuracy-val">0%</div>
+              <div class="score-sub" id="result-accuracy-sub">Correct vs Attempted</div>
+            </div>
+            <div class="score-card">
+              <div class="score-label">Attempts Breakdown</div>
+              <div class="attempts-breakdown">
+                <span class="text-success"><strong id="result-correct-count">0</strong> Correct</span> • 
+                <span class="text-danger"><strong id="result-incorrect-count">0</strong> Wrong</span> • 
+                <span class="text-muted"><strong id="result-skipped-count">0</strong> Skipped</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-actions">
+            <button id="btn-retake-test" class="btn-primary">Practice More</button>
+            <button id="btn-back-to-analytics" class="btn-secondary">Back to Analytics</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
