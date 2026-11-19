@@ -83,6 +83,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-app);
@@ -90,6 +95,19 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.2s ease, color 0.2s ease;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, select {
+  font-family: inherit;
+  touch-action: manipulation;
 }
 
 /* ================= Top Navigation Bar ================= */
@@ -754,6 +772,8 @@ body {
   font-weight: 500;
   color: var(--text-main);
   line-height: 1.65;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .q-bank-options {
@@ -780,8 +800,6 @@ body {
 
 .q-bank-opt:hover {
   background: var(--bg-card-subtle);
-  border-color: var(--primary);
-}
   border-color: var(--primary);
 }
 
@@ -1179,9 +1197,6 @@ body {
   flex-shrink: 0;
   margin-top: 1px;
 }
-  color: var(--text-main);
-  flex-shrink: 0;
-}
 
 .opt-text {
   font-size: 0.95rem;
@@ -1354,9 +1369,558 @@ body {
 .mb-6 { margin-bottom: 1.5rem; }
 .text-left { text-align: left; }
 
-@media (max-width: 900px) {
-  .test-layout { grid-template-columns: 1fr; }
-  .filter-grid { grid-template-columns: 1fr; }
-  .modes-grid { grid-template-columns: 1fr; }
-  .score-kpi-row { grid-template-columns: 1fr; }
+/* ===================================================
+   Full Responsive Layout & Mobile Optimizations
+   (Phones, Foldables, Tablets, Small Laptops)
+   =================================================== */
+
+/* Tablet & Smaller Laptops (<= 1024px) */
+@media (max-width: 1024px) {
+  .main-container {
+    padding: 1.25rem 1rem 3.5rem;
+  }
+  .test-layout {
+    grid-template-columns: 1fr 260px;
+    gap: 1rem;
+  }
+}
+
+/* Medium Tablets & Large Phones (<= 860px) */
+@media (max-width: 860px) {
+  .test-layout {
+    grid-template-columns: 1fr;
+  }
+  .modes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .section-pills-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .filter-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+  .score-kpi-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .q-bank-options {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile Devices & Phones (<= 680px) */
+@media (max-width: 680px) {
+  /* Top Sticky Navigation */
+  .navbar {
+    position: sticky;
+    top: 0;
+  }
+
+  .nav-container {
+    flex-wrap: wrap;
+    padding: 0.65rem 0.85rem;
+    gap: 0.55rem;
+  }
+
+  .brand {
+    order: 1;
+    flex: 1;
+    min-width: 0;
+    gap: 0.5rem;
+  }
+
+  .app-icon-wrap svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .brand-title {
+    font-size: 0.98rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .theme-toggle-btn {
+    order: 2;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.78rem;
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.35rem;
+    background: var(--bg-card-subtle);
+    padding: 0.3rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+  }
+
+  .nav-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.45rem 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Main Container & Base Cards */
+  .main-container {
+    padding: 0.85rem 0.75rem 3rem;
+  }
+
+  .card {
+    padding: 1rem 0.85rem;
+    margin-bottom: 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .card-header h2 {
+    font-size: 1.1rem;
+    line-height: 1.35;
+  }
+
+  .card-desc {
+    font-size: 0.78rem;
+  }
+
+  /* Tab 1: Stats Grid */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .stat-card {
+    padding: 0.85rem 0.75rem;
+    border-radius: var(--radius-md);
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+  }
+
+  .stat-val {
+    font-size: 1.45rem;
+    margin: 0.2rem 0;
+  }
+
+  .stat-note {
+    font-size: 0.7rem;
+    line-height: 1.25;
+  }
+
+  /* Section Breakdown Pills */
+  .section-pills-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .sec-card {
+    padding: 0.75rem 0.8rem;
+    border-radius: var(--radius-md);
+  }
+
+  .sec-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .sec-count {
+    font-size: 0.75rem;
+  }
+
+  .sec-meta {
+    font-size: 0.68rem;
+  }
+
+  /* Table Controls & Filter Pills */
+  .card-header.flex-between {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .table-controls {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .input-search {
+    width: 100%;
+    min-width: 0;
+    font-size: 15px;
+    padding: 0.55rem 0.85rem;
+  }
+
+  .filter-group {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.35rem;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+  }
+
+  .filter-pill {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
+  }
+
+  /* Responsive Data Table */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    scrollbar-width: thin;
+  }
+
+  .data-table {
+    min-width: 680px;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  /* Shift Explorer Grid */
+  .paper-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .paper-item {
+    padding: 0.85rem 1rem;
+  }
+
+  /* Tab 2: Question Bank Filters */
+  .filter-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .select-input {
+    font-size: 15px;
+    height: 40px;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .filter-status {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  /* Question Bank Item */
+  .q-bank-item {
+    padding: 1rem 0.85rem;
+    border-radius: var(--radius-md);
+  }
+
+  .q-bank-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+
+  .q-badges {
+    gap: 0.35rem;
+    width: 100%;
+  }
+
+  .badge-outline {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.45rem;
+  }
+
+  .q-bank-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.35rem;
+  }
+
+  .q-statement-box {
+    padding: 0.85rem;
+    margin: 0.75rem 0;
+    border-radius: var(--radius-md);
+  }
+
+  .q-statement-text {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .q-bank-options {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    margin: 0.85rem 0;
+  }
+
+  .q-bank-opt {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.9rem;
+    gap: 0.65rem;
+  }
+
+  .pagination-bar {
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .pagination-bar button {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.825rem;
+  }
+
+  /* Tab 3: Practice & Test Interface */
+  .mode-card {
+    padding: 1.15rem 0.95rem;
+  }
+
+  .exam-rules-box {
+    font-size: 0.8rem;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .test-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .test-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  #test-title {
+    font-size: 1.05rem;
+  }
+
+  .test-actions-right {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .test-timer {
+    padding: 0.3rem 0.65rem;
+  }
+
+  .timer-digits {
+    font-size: 1.05rem;
+  }
+
+  #btn-finish-test {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.825rem;
+  }
+
+  .question-active-card {
+    padding: 1rem 0.85rem;
+    border-radius: var(--radius-md);
+  }
+
+  .q-card-top {
+    gap: 0.35rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .q-num-pill,
+  .q-sec-tag,
+  .q-topic-tag {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .q-paper-tag {
+    width: 100%;
+    margin-left: 0;
+    font-size: 0.72rem;
+    margin-top: 0.25rem;
+  }
+
+  .options-container {
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .opt-btn {
+    padding: 0.75rem 0.85rem;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    min-height: 48px;
+  }
+
+  .opt-key {
+    width: 26px;
+    height: 26px;
+    font-size: 0.8rem;
+  }
+
+  .opt-text {
+    font-size: 0.9rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Two-row mobile navigation controls */
+  .q-nav-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    padding-top: 1rem;
+  }
+
+  .mid-btns {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: flex;
+    gap: 0.35rem;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .mid-btns button {
+    flex: 1 1 auto;
+    font-size: 0.75rem;
+    padding: 0.45rem 0.4rem;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  #btn-prev-q {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  #btn-next-q {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  /* Palette Sidebar on Mobile */
+  .test-sidebar .palette-card {
+    padding: 1rem 0.85rem;
+    border-radius: var(--radius-md);
+  }
+
+  .palette-legend {
+    gap: 0.65rem;
+    font-size: 0.72rem;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+    gap: 0.35rem;
+    max-height: 220px;
+  }
+
+  .pal-btn {
+    height: 36px;
+    font-size: 0.78rem;
+  }
+
+  /* Result Performance Card */
+  .test-result-container {
+    margin: 1rem auto;
+  }
+
+  .result-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .score-kpi-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+  }
+
+  .score-card {
+    padding: 1rem;
+  }
+
+  .score-val {
+    font-size: 1.5rem;
+  }
+
+  .result-actions {
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+  }
+
+  .result-actions button {
+    width: 100%;
+    padding: 0.65rem 1rem;
+  }
+}
+
+/* Small Smart Phones (<= 380px) */
+@media (max-width: 380px) {
+  .brand-title {
+    font-size: 0.9rem;
+  }
+  .nav-btn {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.2rem;
+  }
+  .stat-val {
+    font-size: 1.25rem;
+  }
+  .sec-title {
+    font-size: 0.75rem;
+  }
+  .sec-meta {
+    display: none;
+  }
+  .mid-btns button {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.25rem;
+  }
 }
